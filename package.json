@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test:registration": "npx cypress run --spec 'cypress/e2e/UI Test Cases/TC1_2_RegisterUser.cy.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^14.2.1"
+    "cypress": "^14.2.1",
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
