@@ -1,0 +1,48 @@
+name: Automation Scheduler
+
+on:
+  schedule:
+    - cron: '30 20,22,0,2,4,6,8,10,12,14,16,18 * * *'  # Every 2 hours IST
+  workflow_dispatch:  # Optional: for manual trigger from GitHub UI
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        run: npx cypress run
+
+      - name: Send failure email
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASS }}
+          subject: "❌ Cypress Test Failed on GitHub Actions"
+          to: gouthamkumar.3991@gmail.com
+          from: GitHub Actions <${{ secrets.EMAIL_USER }}>
+          body: |
+            Hi Goutham,
+
+            Your scheduled Cypress test has failed ❌.
+
+            Please check the job logs here:
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Regards,
+            CI Scheduler
+
