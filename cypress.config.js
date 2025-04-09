@@ -12,7 +12,7 @@ module.exports = defineConfig({
   env:{
     URL: 'https://automationexercise.com',
   },
-  "pageLoadTimeout": 10000,
+  "pageLoadTimeout": 60000,
   "responseTimeout": 10000,
   "watchForFileChanges": false,
 });
