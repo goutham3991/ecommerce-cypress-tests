@@ -1,0 +1,21 @@
+name: Cypress Tests Registration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          install: true
+          runTests: true
+          command: npm run test:registration
