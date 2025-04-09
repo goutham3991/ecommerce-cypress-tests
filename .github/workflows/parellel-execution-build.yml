@@ -1,4 +1,4 @@
-name: Regression Test Cases
+name: Parellel Execution for Tests
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
           install: true
           runTests: true
           command: npm run test:registration
-          
+
   Verify-Product-Run:
     runs-on: ubuntu-latest
 

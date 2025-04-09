@@ -1,4 +1,4 @@
-name: Cypress Tests Registration
+name: Cypress Registration Script
 
 on:
   push:
