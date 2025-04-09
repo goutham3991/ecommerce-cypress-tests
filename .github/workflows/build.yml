@@ -18,4 +18,4 @@ jobs:
         with:
           install: true
           runTests: true
-          command: npm run est:registration
+          command: npm run test:registration
