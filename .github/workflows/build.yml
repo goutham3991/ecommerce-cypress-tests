@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Tests Registration
 
 on:
   push:
@@ -18,3 +18,4 @@ jobs:
         with:
           install: true
           runTests: true
+          command: npm run est:registration
