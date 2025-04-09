@@ -1,9 +1,8 @@
-name: Cypress CI
+name: Cypress Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
 
 jobs:
@@ -14,18 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
         with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Print Node & Cypress Info
-        run: |
-          node -v
-          npx cypress info
-
-      - name: Run Cypress Tests
-        run: npx cypress run
+          install: true
+          runTests: true
