@@ -19,8 +19,7 @@ jobs:
           install: true
           runTests: true
           command: npm run test:registration
-
-jobs:
+          
   Verify-Product-Run:
     runs-on: ubuntu-latest
 
