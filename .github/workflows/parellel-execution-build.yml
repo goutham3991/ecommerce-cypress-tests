@@ -1,0 +1,36 @@
+name: Regression Test Cases
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  Registration-Run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          install: true
+          runTests: true
+          command: npm run test:registration
+
+jobs:
+  Verify-Product-Run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          install: true
+          runTests: true
+          command: npm run test:verifyproduct

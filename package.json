@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:registration": "npx cypress run --spec 'cypress/e2e/UI Test Cases/TC1_2_RegisterUser.cy.js'",
+    "test:verifyproduct": "npx cypress run --spec 'cypress/e2e/UI Test Cases/TC8_verifyProductsPage.cy.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
