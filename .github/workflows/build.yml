@@ -1,9 +1,10 @@
-name: Run E2E Tests
+name: Run Cypress Tests
 
 on:
   push:
     branches:
       - main
+  pull_request:
 
 jobs:
   cypress-run:
@@ -13,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
