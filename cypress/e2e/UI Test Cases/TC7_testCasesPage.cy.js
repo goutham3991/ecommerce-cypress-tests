@@ -1,9 +1,9 @@
 //const { describe } = require("mocha");
 
 describe('UI Test Suite - Automation Practise - Navigate Test Cases Page',()=>{
-    const appUrl = 'https://automationexercise.com';
+
     before('Launch Automation Exercise Application',()=>{
-        cy.visit(appUrl)
+        cy.visit('')
     })
 
     it('Test Case 007 - Navigate to Test Cases Page',()=>{
