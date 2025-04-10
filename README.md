@@ -43,7 +43,7 @@ Fixtures (Test Data)
 🚗 How to Run Locally
 
 1. Clone the Repo
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/goutham3991/ecommerce-cypress-tests.git
 cd your-repo-name
 
 2. Install dependencies:
