@@ -15,9 +15,9 @@ module.exports = defineConfig({
   "pageLoadTimeout": 60000,
   "responseTimeout": 10000,
   "watchForFileChanges": false,
-  reporter: "cypress-mochawesome-reporter",
+  reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-    reportDir: "cypress/reports/html",
+    reportDir: 'cypress/reports/html',
     overwrite: true,
     html: true,
     json: true

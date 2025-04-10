@@ -2,8 +2,8 @@ name: Automation Scheduler
 
 on:
   schedule:
-    - cron: '30 20,22,0,2,4,6,8,10,12,14,16,18 * * *'  # Every 2 hours IST (converted to UTC)
-  workflow_dispatch:  # Optional: manual trigger
+    - cron: '30 20,22,0,2,4,6,8,10,12,14,16,18 * * *'  # Every 2 hours IST
+  workflow_dispatch:
 
 jobs:
   cypress-run:
@@ -21,9 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests and generate report
-        run: |
-          npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome,overwrite=false,html=false,json=true
+      - name: Run Cypress tests (with built-in mochawesome reporter)
+        run: npx cypress run
 
       - name: Upload Mochawesome HTML Report
         if: always()
@@ -51,5 +50,5 @@ jobs:
             Please check the logs and report here:
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
-            Regards,
+            Regards,  
             CI Scheduler
