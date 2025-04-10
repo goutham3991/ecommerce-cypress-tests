@@ -12,6 +12,8 @@ A modern E2E test automation framework built using Cypress, implementing the Pag
 
 ✅ Automated test runs on every push
 
+✅ Mochawesome HTML test report generation
+
 ✅ Scheduled test runs every 2 hours using GitHub Actions
 
 ✅ Failure alerts via email notifications
@@ -39,6 +41,13 @@ GitHub Actions (CI/CD)
 Page Object Model
 
 Fixtures (Test Data)
+
+📎 Test Reports
+Generated using Mochawesome
+
+Merged and exported as HTML
+
+Uploaded as an artifact in GitHub Actions (downloadable)
 
 🚗 How to Run Locally
 
