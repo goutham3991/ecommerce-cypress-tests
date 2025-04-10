@@ -1,6 +1,14 @@
 {
     "userName": "Goutham",
-    "userEmail": "gouthamautomation2@gmail.com"
-
-
+    "userEmail": "gouthamautomation2@gmail.com",
+    "company": "Google",
+    "address": "Kondapur, Hyderabad",
+    "address2": "Telangana",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "zip": "500084",
+    "phone": "1234567890",
+    "password": "Test@123",
+    "firstName": "Goutham",
+    "lastName": "Kumar"
 }

@@ -1,3 +1,5 @@
+import registerData from '../../fixtures/registration.json'
+
 export class RegisterPage {
 
     //locators
@@ -22,7 +24,7 @@ export class RegisterPage {
     //methods
 
     openURL() {
-        cy.visit('https://automationexercise.com')
+        cy.visit('')
     }
 
     verifyLogo() {
@@ -35,6 +37,8 @@ export class RegisterPage {
 
     navigateToSignUpPage() {
         cy.get(this.weblocators.signupLoginMenu).click()
+        cy.url().should('contains','/login')
+        cy.get('.login-form').should('be.visible')
     }
 
     verifySignUpForm() {
@@ -50,4 +54,44 @@ export class RegisterPage {
         cy.get(this.weblocators.signupButton).click()
     }
 
+    verifyHomePage(){
+        cy.get('*.category-products').should('be.visible')
+        cy.get('.brands_products').should('be.visible')
+        cy.get('.features_items').should('be.visible')
+        cy.get('.single-widget').should('be.visible')
+    }
+
+    fillupRegistrationForm(){
+        this.enterSignUpNameAndEmail(registerData.userName,registerData.userEmail)
+        this.clickSignUpButton()
+        cy.get('.radio-inline').find('#uniform-id_gender1').click()
+        cy.get('input[data-qa="name"]').should('have.value',registerData.userName)
+        cy.get('input[data-qa="email"]').should('have.value',registerData.userEmail)
+        cy.get('input[data-qa="password"]').type(registerData.password,{log:false})
+        cy.get('#days').select('7')
+        cy.get('#months').select('October')
+        cy.get('#years').select('1993')
+        cy.get('#uniform-newsletter').click({force:true})
+        cy.get('#uniform-optin').click({force:true})
+        cy.contains('Address Information').should('be.visible')
+        cy.get('input[data-qa="first_name"]').type(registerData.firstName)
+        cy.get('input[data-qa="last_name"]').type(registerData.lastName)
+        cy.get('input[data-qa="company"]').type(registerData.company)
+        cy.get('input[data-qa="address"]').type(registerData.address)
+        cy.get('input[data-qa="address2"]').type(registerData.address2)
+        cy.get('select[data-qa="country"]').select('India')
+        cy.get('input[data-qa="state"]').type(registerData.state)
+        cy.get('input[data-qa="city"]').type(registerData.city)
+        cy.get('input[data-qa="zipcode"]').type(registerData.zip)
+        cy.get('input[data-qa="mobile_number"]').type(registerData.phone)
+        cy.get('button[data-qa="create-account"]').click()
+        cy.contains('Account Created!').should('be.visible')
+        cy.get('[data-qa="continue-button"]').click({force:true})
+        cy.contains('Logged in as').should('be.visible')
+        cy.contains(registerData.userName).should('be.visible')
+    }
+
+    verifyUserAlreadyExistsMsg(){
+      cy.contains('Email Address already exist!',{timeout:5000}).should('be.visible')
+    }
 }

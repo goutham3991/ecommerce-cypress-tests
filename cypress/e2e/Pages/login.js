@@ -21,6 +21,11 @@ enterInvalidLoginCredentials(invalidUserEmail,invalidPassword){
     cy.get(this.weblocators.password).type(invalidPassword)
 }
 
+enterValidLoginCredentials(username,password){
+    cy.get(this.weblocators.email).type(username)
+    cy.get(this.weblocators.password).type(password)
+}
+
 clickOnLoginButton(){
     cy.get(this.weblocators.loginButton).click()
 }
