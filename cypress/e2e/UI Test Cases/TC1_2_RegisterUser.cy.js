@@ -16,7 +16,7 @@ describe('UI Test Suite - Automation Practise - Registeration',()=>{
         registerPage.navigateToSignUpPage()       
         registerPage.verifySignUpForm()
         registerPage.fillupRegistrationForm()
-        deleteAccount.deleteAccount()
-        
+        deleteAccount.navigateToDeleteAccountPage()
+
     })
 })

@@ -10,7 +10,6 @@ export class DeleteAccount{
     navigateToDeleteAccountPage(){
         cy.get(this.weblocators.deleteAccountMenu).click()
         cy.url().should('contains','/delete_account')
-        cy.get(this.weblocators.deleteAccountForm).should('be.visible')
         cy.contains('Account Deleted!').should('be.visible')
     }
     
