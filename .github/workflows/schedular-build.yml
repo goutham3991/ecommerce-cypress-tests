@@ -3,7 +3,7 @@ name: Automation Scheduler
 on:
   schedule:
     - cron: '30 20,22,0,2,4,6,8,10,12,14,16,18 * * *'  # Every 2 hours IST
-  workflow_dispatch:  # Optional: for manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   cypress-run:
@@ -21,8 +21,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests
-        run: npx cypress run
+      - name: Run Cypress tests and generate report
+        run: |
+          npx cypress run
+          npm run posttest   # assumes you’ve added this in package.json
+
+      - name: Upload Mochawesome HTML Report
+        if: always()  # Always upload, even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mochawesome HTML Report
+          path: cypress/reports/html
 
       - name: Send failure email
         if: failure()
@@ -40,9 +49,8 @@ jobs:
 
             Your scheduled Cypress test has failed ❌.
 
-            Please check the job logs here:
+            Please check the logs and report here:
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             Regards,
             CI Scheduler
-
