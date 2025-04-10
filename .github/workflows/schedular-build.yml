@@ -24,7 +24,6 @@ jobs:
       - name: Run Cypress tests and generate report
         run: |
           npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mochawesome,overwrite=false,html=false,json=true
-          npm run posttest
 
       - name: Upload Mochawesome HTML Report
         if: always()

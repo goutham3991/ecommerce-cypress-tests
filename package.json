@@ -6,8 +6,7 @@
   "scripts": {
     "test:registration": "npx cypress run --spec 'cypress/e2e/UI Test Cases/TC1_2_RegisterUser.cy.js'",
     "test:verifyproduct": "npx cypress run --spec 'cypress/e2e/UI Test Cases/TC8_verifyProductsPage.cy.js'",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "posttest": "npx mochawesome-merge cypress/reports/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json --reportDir cypress/reports/html"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
