@@ -1,4 +1,5 @@
 export class DeleteAccount{
+    // This class contains methods to delete an account in the application
     weblocators = {
         deleteAccountMenu: 'li a[href="/delete_account"]',
         deleteAccountForm: '.delete-account-form',
