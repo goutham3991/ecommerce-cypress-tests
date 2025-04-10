@@ -1,9 +1,12 @@
 import { RegisterPage } from "../Pages/registration";
 const registerPage = new RegisterPage()
+import { DeleteAccount } from "../Pages/delete";
 //import registerData from '../../fixtures/registration.json'
 
 
 describe('UI Test Suite - Automation Practise - Registeration',()=>{
+    const deleteAccount = new DeleteAccount()
+    const registerPage = new RegisterPage()
     before('Launch Automation Exercise Application',()=>{       
         registerPage.openURL()
     })
@@ -12,5 +15,6 @@ describe('UI Test Suite - Automation Practise - Registeration',()=>{
         registerPage.navigateToSignUpPage()       
         registerPage.verifySignUpForm()
         registerPage.fillupRegistrationForm()
+        deleteAccount.deleteAccount()
     })
 })
