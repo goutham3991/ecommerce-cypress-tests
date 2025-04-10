@@ -20,8 +20,8 @@ jobs:
           runTests: true
           command: npm run test:registration
 
-      - name: Registration Test Case Report
-      - uses: actions/upload-artifact@v4
+      - name: Upload Mochawesome HTML Report
+        uses: actions/upload-artifact@v4
         with:
-        name: Mochawesome HTML Report
-        path: cypress/reports/html # or path/to/artifact
+          name: Mochawesome HTML Report
+          path: cypress/reports/html
