@@ -1,0 +1,40 @@
+name: BDD Automation Scheduler
+
+on:
+  schedule:
+    - cron: '30 20,22,0,2,4,6,8,10,12,14,16,18 * * *'  # Every 2 hours IST
+  workflow_dispatch:
+
+jobs:
+  bdd-cucumber-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Cucumber BDD Tests
+        run: |
+          npx cypress run \
+            --spec "cypress/e2e/**/*.feature" \
+            --reporter mochawesome \
+            --reporter-options reportDir=cypress/reports/mochawesome,overwrite=false,html=false,json=true
+
+      - name: Generate HTML Report
+        run: |
+          npx mochawesome-merge cypress/reports/mochawesome/*.json > mochawesome.json
+          npx marge mochawesome.json --reportDir cypress/reports/html
+
+      - name: Upload Mochawesome HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: BDD-Report
+          path: cypress/reports/html

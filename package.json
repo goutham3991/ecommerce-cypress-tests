@@ -13,5 +13,13 @@
   "dependencies": {
     "cypress": "^14.2.1",
     "cypress-mochawesome-reporter": "^3.8.2"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/support/step_definitions/",
+    "nonGlobalStepDefinitions": false
   }
 }
